@@ -1,0 +1,59 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build Output
+dist
+dist-ssr
+build
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Vite / Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage
+.nyc_output
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettiercache
+
+# Optional: Lock files (keep if you use these package managers)
+# yarn.lock
+# pnpm-lock.yaml
+# bun.lockb
