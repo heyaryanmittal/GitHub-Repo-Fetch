@@ -41,11 +41,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4 selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4 selection:bg-red-500 selection:text-white">
 
 
       <div className={`w-full max-w-lg transition-all duration-500 ${userData ? 'mt-8' : 'mt-[20vh]'}`}>
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(239,68,68,0.3)]">
           GitHub Repo Fetch
         </h1>
 
@@ -55,19 +55,36 @@ function App() {
             placeholder="Enter GitHub Username..."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-6 py-4 rounded-xl bg-gray-800 border border-gray-700 text-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder-gray-500 shadow-lg"
+            className="w-full px-6 py-4 rounded-xl bg-gray-800 border border-gray-700 text-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition-all placeholder-gray-500 shadow-lg"
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white text-lg font-semibold shadow-lg hover:shadow-emerald-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
+            className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-lg font-semibold shadow-lg hover:shadow-red-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5 active:scale-[0.98]"
           >
             {loading ? 'Searching...' : 'Pull User Data'}
           </button>
         </form>
 
+        {loading && (
+          <div className="mt-12 w-full max-w-5xl animate-pulse">
+            <div className="bg-gray-800/40 rounded-3xl p-8 border border-gray-700 h-48 mb-12 flex items-center gap-8">
+              <div className="w-32 h-32 rounded-full bg-gray-700 animate-shimmer bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-[length:200%_100%]"></div>
+              <div className="flex-1 space-y-4">
+                <div className="h-8 bg-gray-700 rounded-lg w-1/3 animate-shimmer bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-[length:200%_100%]"></div>
+                <div className="h-4 bg-gray-700 rounded-lg w-1/2 animate-shimmer bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-[length:200%_100%]"></div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="h-40 bg-gray-800/40 rounded-2xl border border-gray-700 animate-shimmer bg-gradient-to-r from-gray-800/40 via-gray-700/50 to-gray-800/40 bg-[length:200%_100%]"></div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {error && (
-          <div className="mt-6 p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-200 text-center animate-pulse">
+          <div className="mt-6 p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-200 text-center animate-bounce">
             {error}
           </div>
         )}
@@ -80,7 +97,7 @@ function App() {
 
           <div className="bg-gray-800/50 backdrop-blur-md rounded-3xl p-8 border border-gray-700 shadow-2xl mb-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-green-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-400 to-rose-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
               <img
                 src={userData.avatar_url}
                 alt={`${userData.login} avatar`}
@@ -96,15 +113,15 @@ function App() {
               {userData.bio && <p className="text-gray-400 mb-6 max-w-2xl">{userData.bio}</p>}
 
               <div className="flex flex-wrapjustify-center md:justify-start gap-6 select-none">
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-emerald-500/50 transition-colors">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-red-500/50 transition-colors">
                   <span className="text-2xl font-bold text-white">{userData.public_repos}</span>
                   <span className="text-sm text-gray-400 uppercase tracking-wider">Repos</span>
                 </div>
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-emerald-500/50 transition-colors">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-red-500/50 transition-colors">
                   <span className="text-2xl font-bold text-white">{userData.followers}</span>
                   <span className="text-sm text-gray-400 uppercase tracking-wider">Followers</span>
                 </div>
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-emerald-500/50 transition-colors">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-red-500/50 transition-colors">
                   <span className="text-2xl font-bold text-white">{userData.following}</span>
                   <span className="text-sm text-gray-400 uppercase tracking-wider">Following</span>
                 </div>
@@ -115,7 +132,7 @@ function App() {
               href={userData.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-xl transition-colors text-sm font-medium whitespace-nowrap"
+              className="px-6 py-3 bg-gray-700 hover:bg-gray-600 hover:text-red-400 border border-transparent hover:border-red-500/30 rounded-xl transition-all text-sm font-medium whitespace-nowrap"
             >
               View on GitHub ↗
             </a>
@@ -123,7 +140,7 @@ function App() {
 
 
           <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
+            <span className="w-2 h-8 bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.5)]"></span>
             Repositories <span className="text-gray-500 text-lg font-normal">({repos.length})</span>
           </h3>
 
@@ -134,10 +151,10 @@ function App() {
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col p-6 bg-gray-800/40 hover:bg-gray-800 rounded-2xl border border-gray-700 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
+                className="group flex flex-col p-6 bg-gray-800/40 hover:bg-gray-800 rounded-2xl border border-gray-700 hover:border-red-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/10"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h4 className="text-lg font-bold text-emerald-400 group-hover:text-emerald-300 truncate pr-2">
+                  <h4 className="text-lg font-bold text-red-400 group-hover:text-red-300 truncate pr-2">
                     {repo.name}
                   </h4>
                   <span className="text-xs px-2 py-1 rounded bg-gray-700 text-gray-300 border border-gray-600">
