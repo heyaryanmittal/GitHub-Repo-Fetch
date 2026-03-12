@@ -41,11 +41,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4 selection:bg-cyan-500 selection:text-white">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4 selection:bg-emerald-500 selection:text-white">
 
 
       <div className={`w-full max-w-lg transition-all duration-500 ${userData ? 'mt-8' : 'mt-[20vh]'}`}>
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
           GitHub Repo Fetch
         </h1>
 
@@ -55,12 +55,12 @@ function App() {
             placeholder="Enter GitHub Username..."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-6 py-4 rounded-xl bg-gray-800 border border-gray-700 text-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all placeholder-gray-500 shadow-lg"
+            className="w-full px-6 py-4 rounded-xl bg-gray-800 border border-gray-700 text-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder-gray-500 shadow-lg"
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-lg font-semibold shadow-lg hover:shadow-cyan-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
+            className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white text-lg font-semibold shadow-lg hover:shadow-emerald-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
           >
             {loading ? 'Searching...' : 'Pull User Data'}
           </button>
@@ -80,7 +80,7 @@ function App() {
 
           <div className="bg-gray-800/50 backdrop-blur-md rounded-3xl p-8 border border-gray-700 shadow-2xl mb-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-green-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
               <img
                 src={userData.avatar_url}
                 alt={`${userData.login} avatar`}
@@ -96,15 +96,15 @@ function App() {
               {userData.bio && <p className="text-gray-400 mb-6 max-w-2xl">{userData.bio}</p>}
 
               <div className="flex flex-wrapjustify-center md:justify-start gap-6 select-none">
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-emerald-500/50 transition-colors">
                   <span className="text-2xl font-bold text-white">{userData.public_repos}</span>
                   <span className="text-sm text-gray-400 uppercase tracking-wider">Repos</span>
                 </div>
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-emerald-500/50 transition-colors">
                   <span className="text-2xl font-bold text-white">{userData.followers}</span>
                   <span className="text-sm text-gray-400 uppercase tracking-wider">Followers</span>
                 </div>
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-emerald-500/50 transition-colors">
                   <span className="text-2xl font-bold text-white">{userData.following}</span>
                   <span className="text-sm text-gray-400 uppercase tracking-wider">Following</span>
                 </div>
@@ -123,7 +123,7 @@ function App() {
 
 
           <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <span className="w-2 h-8 bg-cyan-500 rounded-full"></span>
+            <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
             Repositories <span className="text-gray-500 text-lg font-normal">({repos.length})</span>
           </h3>
 
@@ -134,10 +134,10 @@ function App() {
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col p-6 bg-gray-800/40 hover:bg-gray-800 rounded-2xl border border-gray-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/10"
+                className="group flex flex-col p-6 bg-gray-800/40 hover:bg-gray-800 rounded-2xl border border-gray-700 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h4 className="text-lg font-bold text-cyan-400 group-hover:text-cyan-300 truncate pr-2">
+                  <h4 className="text-lg font-bold text-emerald-400 group-hover:text-emerald-300 truncate pr-2">
                     {repo.name}
                   </h4>
                   <span className="text-xs px-2 py-1 rounded bg-gray-700 text-gray-300 border border-gray-600">
