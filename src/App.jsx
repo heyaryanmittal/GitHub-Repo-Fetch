@@ -19,16 +19,27 @@ function App() {
 
     try {
 
-      const userRes = await fetch(`https://api.github.com/users/${username}`);
+      const headers = {};
+      if (import.meta.env.VITE_GITHUB_TOKEN) {
+        headers.Authorization = `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`;
+      }
+
+      const userRes = await fetch(`https://api.github.com/users/${username}`, { headers });
       if (!userRes.ok) {
+        if (userRes.status === 403) {
+          throw new Error('GitHub API rate limit exceeded. Please try again later.');
+        }
         throw new Error(userRes.status === 404 ? 'User not found' : 'Error fetching user');
       }
       const user = await userRes.json();
       setUserData(user);
 
 
-      const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+      const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`, { headers });
       if (!reposRes.ok) {
+        if (reposRes.status === 403) {
+          throw new Error('GitHub API rate limit exceeded while fetching repositories.');
+        }
         throw new Error('Error fetching repositories');
       }
       const reposData = await reposRes.json();
