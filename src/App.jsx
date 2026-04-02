@@ -57,7 +57,7 @@ function App() {
 
       <div className={`w-full max-w-lg transition-all duration-500 ${userData ? 'mt-8' : 'mt-[20vh]'}`}>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          GitHub Repo Fetch
+          GitHub Repo Fetcher
         </h1>
 
         <form onSubmit={handleSearch} className="flex flex-col gap-4">
