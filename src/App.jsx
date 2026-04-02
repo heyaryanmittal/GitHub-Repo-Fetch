@@ -56,7 +56,7 @@ function App() {
 
 
       <div className={`w-full max-w-lg transition-all duration-500 ${userData ? 'mt-8' : 'mt-[20vh]'}`}>
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
           GitHub Repo Fetch
         </h1>
 
@@ -89,35 +89,35 @@ function App() {
         <div className="w-full max-w-5xl mt-12 animate-fade-in-up pb-12">
 
 
-          <div className="bg-gray-800/50 backdrop-blur-md rounded-3xl p-8 border border-gray-700 shadow-2xl mb-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="relative group">
+          <div className="bg-gray-800/50 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-gray-700 shadow-2xl mb-12 flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full overflow-hidden">
+            <div className="relative group shrink-0">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
               <img
                 src={userData.avatar_url}
                 alt={`${userData.login} avatar`}
-                className="relative w-40 h-40 rounded-full object-cover border-4 border-gray-800 shadow-xl"
+                className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-gray-800 shadow-xl"
               />
             </div>
 
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-3xl font-bold mb-2">
+            <div className="flex-1 text-center md:text-left min-w-0 w-full">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 break-words">
                 {userData.name}
-                <span className="text-gray-400 font-normal text-xl ml-2">({userData.login})</span>
+                <span className="text-gray-400 font-normal text-lg sm:text-xl ml-2 block sm:inline-block break-all">({userData.login})</span>
               </h2>
-              {userData.bio && <p className="text-gray-400 mb-6 max-w-2xl">{userData.bio}</p>}
+              {userData.bio && <p className="text-gray-400 mb-6 max-w-2xl text-sm sm:text-base">{userData.bio}</p>}
 
-              <div className="flex flex-wrapjustify-center md:justify-start gap-6 select-none">
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
-                  <span className="text-2xl font-bold text-white">{userData.public_repos}</span>
-                  <span className="text-sm text-gray-400 uppercase tracking-wider">Repos</span>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 sm:gap-6 select-none w-full">
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg flex-1 sm:flex-none min-w-[90px] sm:min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
+                  <span className="text-xl sm:text-2xl font-bold text-white">{userData.public_repos}</span>
+                  <span className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">Repos</span>
                 </div>
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
-                  <span className="text-2xl font-bold text-white">{userData.followers}</span>
-                  <span className="text-sm text-gray-400 uppercase tracking-wider">Followers</span>
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg flex-1 sm:flex-none min-w-[90px] sm:min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
+                  <span className="text-xl sm:text-2xl font-bold text-white">{userData.followers}</span>
+                  <span className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">Followers</span>
                 </div>
-                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
-                  <span className="text-2xl font-bold text-white">{userData.following}</span>
-                  <span className="text-sm text-gray-400 uppercase tracking-wider">Following</span>
+                <div className="flex flex-col items-center p-3 bg-gray-900/50 rounded-lg flex-1 sm:flex-none min-w-[90px] sm:min-w-[100px] border border-gray-700 hover:border-cyan-500/50 transition-colors">
+                  <span className="text-xl sm:text-2xl font-bold text-white">{userData.following}</span>
+                  <span className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider">Following</span>
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@ function App() {
               href={userData.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-xl transition-colors text-sm font-medium whitespace-nowrap"
+              className="w-full md:w-auto text-center px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-xl transition-colors text-sm font-medium whitespace-nowrap shrink-0"
             >
               View on GitHub ↗
             </a>
@@ -160,20 +160,20 @@ function App() {
                   {repo.description || 'No description provided.'}
                 </p>
 
-                <div className="flex items-center gap-4 text-xs text-gray-500 mt-auto pt-4 border-t border-gray-700/50">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-gray-500 mt-auto pt-4 border-t border-gray-700/50">
                   {repo.language && (
-                    <span className="flex items-center gap-1.5">
+                    <span className="flex items-center gap-1.5 shrink-0">
                       <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
                       {repo.language}
                     </span>
                   )}
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1 shrink-0">
                     ⭐ {repo.stargazers_count}
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1 shrink-0">
                     🍴 {repo.forks_count}
                   </span>
-                  <span className="ml-auto">
+                  <span className="ml-auto shrink-0">
                     {new Date(repo.updated_at).toLocaleDateString()}
                   </span>
                 </div>
